@@ -1,0 +1,235 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ===== ANIMASI (KEYFRAMES) ===== */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4f2c50;
+  color: white;
+  padding: 10px 30px;
+  animation: fadeDown 0.8s ease;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* garis bawah yang muncul saat hover */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background-color: #ffbdfc;
+  transition: width 0.3s ease;
+}
+
+nav a:hover {
+  color: #ffbdfc;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  background-color: #4f2c50;
+  color: white;
+  padding: 40px 20px;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  animation: float 3s ease-in-out infinite;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 20px #ffbdfc;
+}
+
+.intro {
+  animation: fadeUp 1s ease both;
+}
+
+/* MAIN */
+main {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+section {
+  background-color: white;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  animation: fadeUp 0.8s ease both;
+}
+
+/* muncul bergantian */
+section:nth-of-type(1) { animation-delay: 0.1s; }
+section:nth-of-type(2) { animation-delay: 0.3s; }
+section:nth-of-type(3) { animation-delay: 0.5s; }
+section:nth-of-type(4) { animation-delay: 0.7s; }
+
+section h2 {
+  color: #2c3e50;
+  border-bottom: 2px solid #ffbdfc;
+  padding-bottom: 5px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.card {
+  background-color: #ecf0f1;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(79, 44, 80, 0.3);
+  background-color: #ffe6fe;
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.price {
+  color: #27ae60;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .price {
+  transform: scale(1.15);
+}
+
+footer {
+  background-color: #4f2c50;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+/* TABLET: 2 kolom */
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* HP: 1 kolom */
+@media (max-width: 500px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Matikan animasi untuk pengguna yang memilih reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+/* TOMBOL INSTAGRAM */
+.btn-ig {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 24px;
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.btn-ig:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(214, 41, 118, 0.4);
+  filter: brightness(1.1);
+}
